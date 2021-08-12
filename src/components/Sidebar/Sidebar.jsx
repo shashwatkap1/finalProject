@@ -32,6 +32,7 @@ import { useLocation } from 'react-router-dom';
 import CreatePlaylist from '../CreatePlaylist/CreatePlaylist';
 import AddTrack from '../AddTrackModal/AddTrack';
 import { ModalsContext } from '../ModalsContext/ModalsContextContainer';
+import { Typography } from '@material-ui/core';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -50,35 +51,15 @@ const Sidebar = () => {
       <CreatePlaylist />
 
       <Link to='/app'>
-        <SpotifyLogo src={SpotifyWhite} alt='spotify logo' />
+        <Typography textAlign='center' variant='h3' style={{ color: '#fff' }}>
+          RvceDj
+        </Typography>
       </Link>
       <NavItemsContainer>
         <Item>
-          <ItemLink exact to='/app'>
-            {pathname === '/app' ? (
-              <HomeSolid fill='#fff' width={23} height={23} />
-            ) : (
-              <HomeOutline fill='#a8a8a8' width={23} height={23} />
-            )}
-            <ItemText>Home</ItemText>
-          </ItemLink>
-        </Item>
-        <Item>
-          <ItemLink to='/app/search'>
-            {pathname === '/app/search' ? (
-              <SearchStrong fill='#a8a8a8' width={23} height={23} />
-            ) : (
-              <Search fill='#a8a8a8' width={23} height={23} />
-            )}
-
-            <ItemText>Search</ItemText>
-          </ItemLink>
-        </Item>
-        <Item>
           <ItemLink
             to='/app/collection/playlists'
-            isActive={() => isLibraryActive}
-          >
+            isActive={() => isLibraryActive}>
             {isLibraryActive ? (
               <LibraryStrongIcon fill='#a8a8a8' width={23} height={23} />
             ) : (
@@ -92,14 +73,7 @@ const Sidebar = () => {
 
       <LibraryContainer>
         <SectionTitle>PLAYLISTS</SectionTitle>
-        <LibraryItem onClick={() => createPlaylist.setIsVisible(true)}>
-          <Item svgTransition={false}>
-            <IconSquare>
-              <PlusIcon fill='#333' width={23} height={23} />
-            </IconSquare>
-            <ItemText>Create Playlist</ItemText>
-          </Item>
-        </LibraryItem>
+
         <LibraryItem gradient>
           <Item svgTransition={false}>
             <ItemLink to='/app/collection/tracks' padding={0} bgc='transparent'>
@@ -116,13 +90,6 @@ const Sidebar = () => {
           <Playlists />
         </ScrollContainer>
       </PlaylistContainer>
-
-      <InstallItem>
-        <ItemLink to='/app/download'>
-          <DownloadIcon fill='#a8a8a8' width={20} height={20} />
-          <ItemText>Install App</ItemText>
-        </ItemLink>
-      </InstallItem>
     </SideContainer>
   );
 };

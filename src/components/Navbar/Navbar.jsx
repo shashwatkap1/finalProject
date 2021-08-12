@@ -31,38 +31,10 @@ const Navbar = () => {
   return (
     <NavContainer>
       <NavSubcontainer>
-        <NavLeftWrapper>
-          <ArrowsContainer>
-            <ArrowIconContainer onClick={() => history.goBack()}>
-              <ArrowLeft fill='#fff' width={22} height={22} />
-            </ArrowIconContainer>
-            <ArrowIconContainer onClick={() => history.goForward()}>
-              <ArrowRight fill='#fff' width={22} height={22} />
-            </ArrowIconContainer>
-          </ArrowsContainer>
-          {pathname === '/app/search' && <SearchInput />}
-          {[
-            '/app/collection/playlists',
-            '/app/collection/albums',
-            '/app/collection/artists',
-          ].includes(pathname) && <LibraryMenu />}
-        </NavLeftWrapper>
         <NavRightWrapper>
-          <UpgradeButton
-            href='https://www.spotify.com/premium'
-            target='_blank'
-            rel='noopener noreferrer'
-            title='Upgrade to Premium'>
-            <UpgradeText>upgrade</UpgradeText>
-          </UpgradeButton>
-
           <UserContainer onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {images && <Avatar src={images[0]?.url} />}
             <Name>{display_name}</Name>
-            <ArrowDownIconContainer open={isMenuOpen}>
-              <ArrowDown fill='#fff' width={10} height={10} />
-            </ArrowDownIconContainer>
-            <NavbarProfileMenu open={isMenuOpen} />
           </UserContainer>
         </NavRightWrapper>
       </NavSubcontainer>
