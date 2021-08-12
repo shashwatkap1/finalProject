@@ -13,7 +13,7 @@ import {
   NavSubcontainer,
   ArrowsContainer,
   ArrowIconContainer,
-  UserContainer
+  UserContainer,
 } from './navbarStyles';
 import { ReactComponent as ArrowDown } from '../../assets/icons/down-arrow.svg';
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg';
@@ -44,7 +44,7 @@ const Navbar = () => {
           {[
             '/app/collection/playlists',
             '/app/collection/albums',
-            '/app/collection/artists'
+            '/app/collection/artists',
           ].includes(pathname) && <LibraryMenu />}
         </NavLeftWrapper>
         <NavRightWrapper>
@@ -52,13 +52,12 @@ const Navbar = () => {
             href='https://www.spotify.com/premium'
             target='_blank'
             rel='noopener noreferrer'
-            title='Upgrade to Premium'
-          >
+            title='Upgrade to Premium'>
             <UpgradeText>upgrade</UpgradeText>
           </UpgradeButton>
 
           <UserContainer onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {images && <Avatar src={images[0].url} />}
+            {images && <Avatar src={images[0]?.url} />}
             <Name>{display_name}</Name>
             <ArrowDownIconContainer open={isMenuOpen}>
               <ArrowDown fill='#fff' width={10} height={10} />
