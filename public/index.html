@@ -10,6 +10,15 @@
     onload="init()"
     async
 >
+      <script>
+    function init() {
+    try {
+        window.magicpulseinit("YOUR_APP_ID");
+    } catch (error) {
+        console.error("Failed to load the Magic Pulse package", error);
+    }
+    }
+</script>
 </script>
     <meta
       name="description"
